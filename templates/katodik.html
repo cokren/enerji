@@ -1,0 +1,119 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="container-fluid">
+  <div class="row gy-2" style="font-family:arial;font-size:10pt">
+    <div class="col-lg-6 border border-secondary border border-1 rounded-3 bg-light shadow">
+      <br>
+      <h4 style="color=#FFA07A; text-align:center;">Hat Listesi</h4>
+      <hr>
+      <table  class="table table-sm"
+        
+        data-toggle="table"
+        data-search="true"
+        data-show-columns="true"
+        data-pagination="true"
+        data-filter-control="true"
+        data-show-fullscreen="true"
+        data-buttons-prefix="btn-sm btn"
+        data-buttons-class="warning" 
+        data-show-export="true"
+        data-show-toggle="true"
+        data-show-columns-toggle-all="true"
+        data-resizable="true">
+        
+
+        <thead class="table-light">
+          <tr class="tr-class-1">
+            <th data-field="id">S.No</th>
+            <th data-field="hatadi" data-sortable="true" data-sort-name="hatadi" data-sort-order="desc">Hat Adı</th>
+            <th data-field="hattipi" data-sortable="true" data-sort-name="hattipi" data-sort-order="desc" data-filter-control="select">Hat Tipi</th>
+            <th data-field="cap" data-sortable="true" data-sort-name="cap" data-sort-order="desc" data-filter-control="select">Çap</th>
+            <th data-field="uzunluk" data-sortable="true" data-sort-name="uzunluk" data-sort-order="desc">Uzunluk</th>
+            <th data-field="kaplama" data-sortable="true" data-sort-name="kaplama" data-sort-order="desc">Kaplama</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+          {% for hat in hathtml %}
+          <tr> 
+            <td>{{hat.id}}</td>
+            <td>{{hat.HAT_ADI}}</td>
+            <td>{{hat.HAT_TIPI}}</td>            
+            <td>{{hat.CAP}}</td>
+            <td>{{hat.UZUNLUK}}</td>
+            <td>{{hat.KAPLAMA}}</td>
+          </tr>    
+          {% endfor %}
+        
+        </tbody>
+      </table>
+    </div>
+    <div class="col-lg-6 border border-secondary border border-1 rounded-3 bg-light shadow">
+      <br>
+      <h4 style="color=#FFA07A; text-align:center;">Pano Listesi</h4>
+      <hr>
+      <table  class="table table-sm"
+        
+        data-toggle="table"
+        data-search="true"
+        data-show-columns="true"
+        data-pagination="true"
+        data-filter-control="true"
+        data-show-fullscreen="true"
+        data-buttons-prefix="btn-sm btn"
+        data-buttons-class="danger" 
+        data-show-export="true"
+        data-show-toggle="true"
+        data-show-columns-toggle-all="true"
+        data-resizable="true">
+        
+
+        <thead class="table-light">
+          <tr class="tr-class-1">
+            <th data-field="id">S.No</th>
+            <th data-field="panoadi" data-sortable="true" data-sort-name="panoadi" data-sort-order="desc">Pano Adı</th>
+            <th data-field="panotipi" data-sortable="true" data-sort-name="panotipi" data-sort-order="desc" data-filter-control="select">Pano Tipi</th>
+            <th data-field="panomarka" data-sortable="true" data-sort-name="panomarka" data-sort-order="desc" data-filter-control="select" data-card-visible="true" data-visible="false">Pano Marka</th>
+            <th data-field="devretarihi" data-sortable="true" data-sort-name="devretarihi" data-sort-order="desc">Devreye Alma Tarihi</th>
+            <th data-field="hat" data-sortable="true" data-sort-name="hat" data-sort-order="desc" data-filter-control="select">Hattı </th>
+            <th data-field="modem" data-sortable="true" data-sort-name="modem" data-sort-order="desc">Modem</th>
+            <th data-field="ip" data-sortable="true" data-sort-name="ip" data-sort-order="desc">IP</th>
+            <th data-field="aciklama" data-card-visible="true" data-visible="false">Açıklama</th>
+            <th data-field="konum" data-card-visible="true" data-visible="false">Konum</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+          {% for pano in panohtml %}
+          <tr> 
+            <td>{{pano.id}}</td>
+            <td>{{pano.PANO_ADI}}</td>
+            <td>{{pano.PANO_TIPI}}</td>            
+            <td>{{pano.PANO_MARKA}}</td>
+            <td>{{pano.DEVREYE_ALMA_TARIHI}}</td>
+            <td>{{pano.HAT}}</td>
+            <td>{{pano.MODEM}}</td>
+            <td>{{pano.IP}}</td>
+            <td>{{pano.ACIKLAMA}}</td>
+            <td><a type="button" class="btn btn-outline-danger btn-sm" target="_blank" href="https://www.google.com.tr/maps/place/{{pano.KONUM}}"><i class="fa fa-map-o"></i></a></td>
+          </tr>    
+          {% endfor %}
+        
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+
+</div>
+<script>
+  $(function() {
+    $('#table').bootstrapTable()
+  })
+</script>
+
+
+
+
+{% endblock body %}

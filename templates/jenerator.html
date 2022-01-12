@@ -1,0 +1,241 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<!--<h2 style="text-align:center"><span class="badge bg-dark">Jeneratör Sayfası</span></h2>
+<hr>-->
+<div class="container-fluid">
+  <div class="row gy-2" style="font-family:arial;font-size:10pt">
+    <div class="col-lg-6 border border-secondary border border-1 rounded-3 bg-light shadow">
+      <br>
+      <h4 style="color=#FFA07A; text-align:center;">Jeneratör Listesi</h4>
+      <hr>
+      <table  class="table table-sm"
+        
+        data-toggle="table"
+        data-search="true"
+        data-show-columns="true"
+        data-pagination="true"
+        data-filter-control="true"
+        data-show-fullscreen="true"
+        data-buttons-prefix="btn-sm btn"
+        data-buttons-class="warning" 
+        data-show-export="true"
+        data-show-toggle="true"
+        data-show-columns-toggle-all="true"
+        data-resizable="true">
+        
+
+        <thead class="table-light">
+          <tr class="tr-class-1">
+            <!--<th data-field="id">S.No</th>-->
+            <th data-field="plaka">Plaka</th>
+            <th data-field="ilce" data-sortable="true" data-sort-name="ilce" data-sort-order="desc" data-filter-control="select">İlçe</th>
+            <th data-field="tesis" data-sortable="true" data-sort-name="tesis" data-sort-order="desc" data-filter-control="select">Tesis</th>
+            <th data-field="tesis_turu" data-sortable="true" data-sort-name="tesis_turu" data-sort-order="desc" data-filter-control="select">Tesis Türü</th>
+            <th data-field="marka" data-sortable="true" data-sort-name="marka" data-sort-order="desc" data-filter-control="select">Marka</th>
+            <th data-field="power" data-sortable="true" data-sort-name="power" data-sort-order="desc" data-filter-control="select">Gücü</th>
+            <th data-field="motor_marka" data-card-visible="true" data-visible="false">Model</th>
+            <th data-field="motor_marka" data-card-visible="true" data-visible="false">Motor Markası</th>
+            <th data-field="motor_model" data-card-visible="true" data-visible="false">Motor Modeli</th>
+            <th data-field="motor_seri" data-card-visible="true" data-visible="false">Motor Seri No</th>
+            <th data-field="alt_marka" data-card-visible="true" data-visible="false">Alternatör Markası</th>
+            <th data-field="alt_model" data-card-visible="true" data-visible="false">Alternatör Modeli</th>
+            <th data-field="alt_seri" data-card-visible="true" data-visible="false">Alternatör Seri No</th>
+            <th data-field="kabin" data-card-visible="true" data-visible="false">Kabin Durumu</th>
+            <th data-field="alis" data-card-visible="true" data-visible="false">Alış Yöntemi</th>
+            <th data-field="aciklama" data-card-visible="true" data-visible="false">Açıklama</th>
+            <th data-field="konum" data-card-visible="true" data-visible="false">Konum</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+          {% for gen in jeneratorler %}
+          <tr> 
+            <!--<td>{{gen.id}}</td>-->
+            <td>{{gen.PLAKA}}</td>
+            <td>{{gen.ILCE}}</td>
+            <td>{{gen.TESIS_ADI}}</td>            
+            <td>{{gen.TESIS_TIPI}}</td>
+            <td>{{gen.MARKA}}</td>
+            <td>{{gen.GUC}}</td>
+            <td>{{gen.MODEL}}</td>
+            <td>{{gen.MOTOR_MARKA}}</td>
+            <td>{{gen.MOTOR_MODEL}}</td>
+            <td>{{gen.MOTOR_SERINO}}</td>
+            <td>{{gen.ALT_MARKA}}</td>
+            <td>{{gen.ALT_MODEL}}</td>
+            <td>{{gen.ALT_SERINO}}</td>
+            <td>{{gen.KABIN}}</td>
+            <td>{{gen.ALIS_YONTEMI}}</td>
+            <td>{{gen.ACIKLAMA}}</td>
+            <td><a type="button" class="btn btn-outline-danger btn-sm" target="_blank" href="https://www.google.com.tr/maps/place/{{gen.KONUM}}"><i class="fa fa-map-o"></i></a></td>
+          </tr>    
+          {% endfor %}
+        
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-lg-6 border border-secondary border border-1 rounded-3 bg-light shadow">
+      <br>
+      <h4 style="text-align:center">Arıza Listesi</h4>
+      <hr>
+
+      <table  class="table table-sm"
+        
+        data-toggle="table"
+        data-search="true"
+        data-show-columns="true"
+        data-pagination="true"
+        data-filter-control="true"
+        data-show-fullscreen="true"
+        data-buttons-prefix="btn-sm btn"
+        data-buttons-class="danger" 
+        data-show-export="true"
+        data-show-toggle="true"
+        data-show-columns-toggle-all="true"
+        data-resizable="true"
+        >
+
+        <thead class="table-light">
+          <tr class="tr-class-1">
+            <th data-field="id">S.No</th>
+            <th data-field="tarih" data-sortable="true" data-sort-name="jenerator" data-sort-order="desc">Tarih </th>
+            <th data-field="jenerator" data-sortable="true" data-sort-name="jenerator" data-sort-order="desc" data-filter-control="select">Jeneratör</th>
+            <th data-field="ariza_tipi" data-sortable="true" data-sort-name="ariza_tipi" data-sort-order="desc" data-filter-control="select">Arıza Tipi</th>
+            <th data-field="degisen_parca" data-sortable="true" data-sort-name="model" data-sort-order="desc" data-filter-control="select">Değişen Parça</th>
+            <th data-field="personel" data-sortable="true" data-sort-name="personel" data-sort-order="desc" data-filter-control="select">Servis Personeli</th>
+            <th data-field="aciklama" data-card-visible="true" data-visible="false">Açıklama</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+          {% for ariza in arizalar %}
+          <tr> 
+            <td>{{ariza.id}}</td>      
+            <td>{{ariza.ARIZA_TARIHI}}</td>
+            <td>{{ariza.JENERATOR}}</td>
+            <td>{{ariza.ARIZA_TIPI}}</td>
+            <td>{{ariza.DEGISEN_PARCA}}</td>
+            <td>{{ariza.PERSONEL}}</td>
+            <td>{{ariza.ACIKLAMA}}</td>
+          </tr>    
+          {% endfor %}
+        
+        </tbody>
+      </table>    
+    </div>
+  </div>
+  
+  <div class="row gy-2" style="font-family:arial;font-size:10pt">
+    <div class="col-lg-4 border border-secondary border border-1 rounded-3 bg-light shadow">
+      <br>
+      <h4 style="text-align:center">Periyodik Bakım Listesi</h4>
+      <hr>
+      <table  class="table table-sm"        
+        data-toggle="table"
+        data-search="true"
+        data-show-columns="true"
+        data-pagination="true"
+        data-filter-control="true"
+        data-show-fullscreen="true"
+        data-buttons-prefix="btn-sm btn"
+        data-buttons-class="success" 
+        data-show-export="true"
+        data-show-toggle="true"
+        data-show-columns-toggle-all="true"
+        data-resizable="true">
+
+        <thead class="table-light">
+          <tr class="tr-class-1">
+            <th data-field="id">S.No</th>
+            <th data-field="tarih" data-sortable="true" data-sort-name="tarih" data-sort-order="desc" data-filter-control="select">Tarih </th>
+            <th data-field="jenerator" data-sortable="true" data-sort-name="jenerator" data-sort-order="desc" data-filter-control="select">Jeneratör</th>
+            <th data-field="personel" data-sortable="true" data-sort-name="personel" data-sort-order="desc" data-filter-control="select">Servis Personeli</th>
+            <th data-field="aciklama" data-card-visible="true" data-visible="false">Açıklama</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+          {% for per in periyodik %}
+          <tr> 
+            <td>{{per.id}}</td>      
+            <td>{{per.PERIYODIK_TARIHI}}</td>
+            <td>{{per.JENERATOR}}</td>
+            <td>{{per.PERSONEL}}</td>
+            <td>{{per.ACIKLAMA}}</td>
+          </tr>    
+          {% endfor %}
+        
+        </tbody>
+      </table>    
+    </div>
+
+    <div class="col-lg-8 border border-secondary border border-1 rounded-3 bg-light shadow">
+      <br>
+      <h4 style="text-align:center">Filtreli Bakım Listesi</h4>
+      <hr>
+      <table  class="table table-sm"        
+        data-toggle="table"
+        data-search="true"
+        data-show-columns="true"
+        data-pagination="true"
+        data-filter-control="true"
+        data-show-fullscreen="true"
+        data-buttons-prefix="btn-sm btn"
+        data-buttons-class="info" 
+        data-show-export="true"
+        data-show-toggle="true"
+        data-show-columns-toggle-all="true"
+        data-resizable="true">
+
+        <thead class="table-light">
+          <tr class="tr-class-1">
+            <th data-field="id">S.No</th>
+            <th data-field="tarih" data-sortable="true" data-sort-name="tarih" data-sort-order="desc" data-filter-control="select">Tarih </th>
+            <th data-field="jenerator" data-sortable="true" data-sort-name="jenerator" data-sort-order="desc" data-filter-control="select">Jeneratör</th>
+            <th data-field="motoryag" data-sortable="true" data-sort-name="motoryag" data-sort-order="desc">Motor Yağı</th>
+            <th data-field="sogsivi" data-sortable="true" data-sort-name="sogsivi" data-sort-order="desc">Soğutma Sıvısı</th>
+            <th data-field="havafiltre" data-sortable="true" data-sort-name="havafiltre" data-sort-order="desc">Hava Filtresi</th>
+            <th data-field="yakitfiltre" data-sortable="true" data-sort-name="yakitfiltre" data-sort-order="desc">Yakıt Filtresi</th>
+            <th data-field="yagfiltre" data-sortable="true" data-sort-name="yagfiltre" data-sort-order="desc">Yağ Filtresi</th>
+            <th data-field="sufiltre" data-sortable="true" data-sort-name="sufiltre" data-sort-order="desc">Su Filtresi</th>
+            <th data-field="personel" data-sortable="true" data-sort-name="personel" data-sort-order="desc" data-filter-control="select" data-card-visible="true" data-visible="false">Servis Personeli</th>
+            <th data-field="aciklama" data-card-visible="true" data-visible="false">Açıklama</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+          {% for filt in filtreli %}
+          <tr> 
+            <td>{{filt.id}}</td>      
+            <td>{{filt.FBAKIM_TARIHI}}</td>
+            <td>{{filt.JENERATOR}}</td>
+            <td>{{filt.MOTORYAG}}</td>
+            <td>{{filt.SOGSIVI}}</td>
+            <td>{{filt.HAVAFILTRE}}</td>
+            <td>{{filt.YAKITFILTRE}}</td>
+            <td>{{filt.YAGFILTRE}}</td>
+            <td>{{filt.SUFILTRE}}</td>
+            <td>{{filt.PERSONEL}}</td>
+            <td>{{filt.ACIKLAMA}}</td>
+          </tr>    
+          {% endfor %}
+        
+        </tbody>
+      </table>    
+    </div>
+  </div>
+</div>
+<script>
+  $(function() {
+    $('#table').bootstrapTable()
+  })
+</script>
+
+
+  
+
+
+{% endblock body %}
+

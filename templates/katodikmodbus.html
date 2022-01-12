@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Pano Adı</th>
+      <th scope="col">Anot Akımı</th>
+      <th scope="col">Anot Voltajı</th>
+      <th scope="col">Boru Zemin Voltajı</th>
+      <th scope="col">Pano Sıcaklığı</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Sarıkum Mah.</th>
+      <td>{{ANA}} A</td>
+      <td>{{ANV}} V</td>
+      <td>{{BZV}} mV</td>
+      <td>{{TMP}} C</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+{% endblock body %}
